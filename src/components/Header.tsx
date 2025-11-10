@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { LogOut, User } from "lucide-react";
+import logoUnpri from "@/assets/logo-unpri.png";
 
 interface HeaderProps {
   studentId: string;
@@ -9,7 +10,8 @@ interface HeaderProps {
 const Header = ({ studentId, studentName }: HeaderProps) => {
   return (
     <header className="bg-card border-b border-border px-6 py-4 flex items-center justify-between">
-      <div>
+      <div className="flex items-center gap-3">
+        <img src={logoUnpri} alt="Logo UNPRI" className="h-12 w-auto" />
         <h1 className="text-2xl font-bold text-primary">SIAM UNPRI</h1>
       </div>
       
