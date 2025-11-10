@@ -6,8 +6,12 @@ import AnnouncementCard from "@/components/AnnouncementCard";
 import MenuCard from "@/components/MenuCard";
 import Chatbot from "@/components/Chatbot";
 import { QrCode, Calendar, User, FileText, BookOpen, GraduationCap, ClipboardList, Info } from "lucide-react";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 const Index = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  
   const studentData = {
     name: "Daniel Ari Hutapea",
     studentId: "223303030636",
@@ -74,10 +78,14 @@ const Index = () => {
 
   return (
     <div className="flex min-h-screen bg-background">
-      <Sidebar activeSection="home" />
+      <Sidebar isOpen={isSidebarOpen} />
       
-      <div className="flex-1 flex flex-col overflow-hidden">
-        <Header studentId={studentData.studentId} studentName={studentData.name} />
+      <div className={cn("flex-1 flex flex-col overflow-hidden transition-all duration-300", isSidebarOpen ? "ml-64" : "ml-0")}>
+        <Header 
+          studentId={studentData.studentId} 
+          studentName={studentData.name}
+          onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
+        />
         
         <main className="flex-1 overflow-y-auto">
           <div className="max-w-7xl mx-auto p-6">
